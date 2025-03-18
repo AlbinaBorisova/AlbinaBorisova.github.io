@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт-визитка</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row row-top">
+            <div class="block">
+                <h2>Обо мне</h2>
+                <p>Привет! Меня зовут Альбина. Я QA-специалист с опытом ручного тестирования более 3 лет.</p>
+                <p>Занимаюсь функциональным тестированием, включая декстопные приложения, веб-сайты и мобильные устройства.</p>
+                <p>Сейчас активно изучаю автоматизацию на Python, осваивая современные инструменты и фреймворки для улучшения процессов.</p>
+            </div>
+            <div class="block">
+                <h2>Навыки и стек</h2>
+                <ul>
+                    <li>Devtools (для тестирования front-end приложений)</li>
+                    <li>Postman, SOAP UI (для тестирования бекенда)</li>
+                    <li>Яндекс-трекер, Jira (таск-трекеры)</li>
+                    <li>Swagger, Redoc (Вики)</li>
+                    <li>Test it (TMS)</li>
+                    <li>Kibana, Sentry (просмотр логов)</li>
+                    <li>Metabase, Dbeaver (доступ в БД)</li>
+                    <li>github actions, gitlab ci/cd (ci/cd)</li>
+                    <li>Charles (мобильные приложения)</li>
+                    <li>Cypress JS (автотесты)</li>
+                    <li>Kafka (для работы с очередью)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row row-bottom">
+            <div class="block">
+                <h2>Проекты</h2>
+                <ul>
+                    <li><a href="https://peakstore.ru/" target="_blank">https://peakstore.ru/</a></li>
+                    <li><a href="https://airlife.ru/" target="_blank">https://airlife.ru/</a></li>
+                    <li><a href="https://auto.ae/en/" target="_blank">https://auto.ae/en/</a></li>
+                </ul>
+            </div>
+            <div class="block">
+                <h2>Контакты</h2>
+                <div class="contacts">
+                    <a href="https://t.me/AlbaBorisova" target="_blank">
+                        <img src="telegram.png" alt="Telegram" title="Telegram">
+                    </a>
+                    <a href="https://github.com/AlbinaBorisova" target="_blank">
+                        <img src="github.png" alt="GitHub" title="GitHub">
+                    </a>
+                    <a href="mailto:albina-istra@yandex.ru">
+                        <img src="email.png" alt="Email" title="Email">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="background-audio" loop>
+        <source src="Five.m4a" type="audio/aac">
+        Ваш браузер не поддерживает элемент audio.
+    </audio>
+
+    <div class="audio-controls">
+        <button id="play-pause" aria-label="Play/Pause">
+            <i class="fas fa-play"></i> Play
+        </button>
+        <button id="mute-unmute" aria-label="Mute/Unmute">
+            <i class="fas fa-volume-up"></i> Mute
+        </button>
+    </div>
+
+    <script>
+        const audio = document.getElementById('background-audio');
+        const playPauseBtn = document.getElementById('play-pause');
+        const muteUnmuteBtn = document.getElementById('mute-unmute');
+
+        let isPlaying = false;
+
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i> Play';
+            } else {
+                audio.play()
+                    .then(() => {
+                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                    })
+                    .catch(error => {
+                        console.log('Ошибка воспроизведения:', error);
+                        alert('Не удалось воспроизвести аудио. Пожалуйста, нажмите "Play" еще раз.');
+                    });
+            }
+            isPlaying = !isPlaying;
+        });
+
+        muteUnmuteBtn.addEventListener('click', () => {
+            if (audio.muted) {
+                audio.muted = false;
+                muteUnmuteBtn.innerHTML = '<i class="fas fa-volume-up"></i> Mute';
+            } else {
+                audio.muted = true;
+                muteUnmuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i> Unmute';
+            }
+        });
+    </script>
+</body>
+</html>
